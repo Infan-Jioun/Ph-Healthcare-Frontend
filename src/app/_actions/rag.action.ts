@@ -29,6 +29,13 @@ export const queryActions = async (query: string) => {
                 }
             }
         }
+        let sources = 100 - Number(response?.data?.sources[0]?.similarity) * 100
+
+        return {
+            success: true,
+            answer: answer as string,
+            sources: `${sources.toFixed(2)}% matched`
+        }
     } catch (error) {
         console.log(error)
     }
