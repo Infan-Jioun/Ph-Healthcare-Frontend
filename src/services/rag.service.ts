@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { httpClient } from "@/lib/axios/httpClient";
 
 export interface IRagQueryPayload {
     query: string;
     limit?: string;
-    sourceType?: string
+    sourceType?: string;
 }
+
 export interface IRagSource {
     id: string;
     content: string;
@@ -12,25 +14,29 @@ export interface IRagSource {
     metadata?: {
         name?: string;
         [key: string]: unknown;
-    }
+    };
     sourceType?: string;
-
 }
+
 export interface IRagQueryData {
     answer: any;
-    souces: IRagSource[];
-    contextUsed: string
+    sources: IRagSource[];
+    contextUsed: string;
 }
+
 export interface IIngestDoctorData {
     success: boolean;
     message: string;
-    indexedCount: number
+    indexedCount: number;
 }
+
+
 export const queryRagService = async (payload: IRagQueryPayload) => {
-    const response = await httpClient.post("/rag/query", payload);
+    const response = await httpClient.post<IRagQueryData>("/rag/query", payload);
     return response;
-}
+};
+
 export const ingestDoctorService = async () => {
-    const response = await httpClient.post("/rag/ingest-doctor", {});
+    const response = await httpClient.post<IIngestDoctorData>("/rag/ingest-doctor", {});
     return response;
-}
+};
