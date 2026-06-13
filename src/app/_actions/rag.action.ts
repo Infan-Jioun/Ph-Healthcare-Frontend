@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use server"
 import { ingestDoctorService, queryRagService } from "@/services/rag.service";
 
 export const queryRagAction = async (query: string) => {

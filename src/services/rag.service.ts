@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use server"
+
 import { httpClient } from "@/lib/axios/httpClient";
 
 export interface IRagQueryPayload {

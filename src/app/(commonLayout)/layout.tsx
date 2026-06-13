@@ -1,5 +1,7 @@
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import FloatingChat from "./ai-chat/page";
+
 
 export default function CommonLayout({
   children,
@@ -11,6 +13,7 @@ export default function CommonLayout({
       <Navbar />
       {children}
       <Footer />
+      <FloatingChat></FloatingChat>
     </>
   );
 }
